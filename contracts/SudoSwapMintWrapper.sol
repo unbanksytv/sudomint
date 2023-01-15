@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.13;
 
-import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
-import { Strings } from "@openzeppelin/contracts/utils/Strings.sol";
-import { IERC165 } from "@openzeppelin/contracts/utils/introspection/IERC165.sol";
-import { IERC721 } from "@openzeppelin/contracts/token/ERC721/IERC721.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/utils/Strings.sol";
+import "@openzeppelin/contracts/utils/introspection/IERC165.sol";
+import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 
-import { ERC721TokenReceiver } from "@solmate/contracts/tokens/ERC721.sol";
+import "@solmate/contracts/tokens/ERC721.sol";
 
 import { ISSMintableNFT } from "./interfaces/ISSMintableNFT.sol";
 import { ISSMintWrapperNFT } from "./interfaces/ISSMintWrapperNFT.sol";
