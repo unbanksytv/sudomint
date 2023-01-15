@@ -6,10 +6,11 @@
     "release": "npx thirdweb@latest release"
   },
   "devDependencies": {
-    "hardhat": "^2.12.6"
+    "hardhat": "^2.12.6",
+    "ts-node": "^10.9.1"
   },
   "dependencies": {
-    "@openzeppelin/contracts": "^2.3.0",
+    "@openzeppelin/contracts": "^4.8.1",
     "@openzeppelin/hardhat-upgrades": "^1.22.0",
     "@thirdweb-dev/contracts": "^3",
     "solmate": "^6.6.1"
