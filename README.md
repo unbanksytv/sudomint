@@ -1,4 +1,16 @@
-15k randomized tiered airdrop collection for GVO
+## Randomized tiered airdrop collection
+
+## MDDA
+
+Imagine running true Dutch auctions within NFT sales. This implementation is the exact same one used for the KiwamiNFT drop. Note that the current version is highly experimental and could include a myriad of breaking bugs. Therefore, please use with extreme caution. One of the key features of MDDA is the admin has little to no control over modifying sale parameters after the auction has been set. This removes any ability for the admin to rug or adjust auction sale details once it has begun. For this reason, it is not to be used carelessly. A simple example is the auction start time. Once set, it cannot be adjusted. This gives the team and community confidence that the admin cannot adjust it to call withdrawFinalFunds, which pulls all contract funds, include any pending refunds. Additional safeguards are in place as well. The initial funds withdrawal function accounts for pending refunds, meaning you can be confident your refund is safe within the contract for at least one week. MDDA also provides the user full control over their refund. The admin is not responsible for sending refunds. This has a few implications: 
+
+One, it puts the power in the hands of the users and removes any ability for the admin to control a user’s refund. 
+
+Two, it also avoids poor coding practices of having massive loops run within a single call.
+
+Three, it also avoids the recent attack seen with AkuDreams, where an exploiter was able to inject a malicious refund that never went to completion, which removed the ability for anyone to call the processRefunds function until the exploiter relinquished control.
+
+Disclaimer: This code is still a rough draft. There could very well be major breaking bugs. There are not yet many unit tests. Please use this with discretion and make sure you fully understand the code before using it. Any and all scrutiny is welcome.
 
 ## Getting Started
 
