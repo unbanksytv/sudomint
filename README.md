@@ -1,6 +1,6 @@
 ## Randomized tiered airdrop collection
 
-## MDDA
+## MDDA On Chain Dutch Auction with refund system
 
 Imagine running true Dutch auctions within NFT sales. This implementation is the exact same one used for the KiwamiNFT drop. Note that the current version is highly experimental and could include a myriad of breaking bugs. Therefore, please use with extreme caution. One of the key features of MDDA is the admin has little to no control over modifying sale parameters after the auction has been set. This removes any ability for the admin to rug or adjust auction sale details once it has begun. For this reason, it is not to be used carelessly. A simple example is the auction start time. Once set, it cannot be adjusted. This gives the team and community confidence that the admin cannot adjust it to call withdrawFinalFunds, which pulls all contract funds, include any pending refunds. Additional safeguards are in place as well. The initial funds withdrawal function accounts for pending refunds, meaning you can be confident your refund is safe within the contract for at least one week. MDDA also provides the user full control over their refund. The admin is not responsible for sending refunds. This has a few implications: 
 
