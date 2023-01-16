@@ -10,10 +10,10 @@ Akutar.sol
 Written by: mousedev.eth
 Contributions by: manifold.xyz
 15,000 NFTs in 4 sections
-(6) ID 1-6 partner reserved NFTs
-(529) ID 7-535 Mega OG GVO, randomly assigned to 529 Founder Mint Pass holders (addresses known)
-(2527) ID 536-3,062 OG GVO, randomly assigned to 2,527 Artist Mint Pass holders (addresses known)
-(11938) ID 3,063-15,000 GVO, randomly assigned to 6,443 Collector Mint Pass holders + 5495 public bids (addresses known)
+(6) ID 1-6 GVO partner reserved NFTs
+(529) ID 7-535 Crew Of Gold GVO, randomly assigned to 529 Founder Mint Pass holders (addresses known)
+(2527) ID 536-3,062 Captains of Silver GVO, randomly assigned to 2,527 Artist Mint Pass holders (addresses known)
+(11938) ID 3,063-15,000 Mates Of Steel GVO, randomly assigned to 6,443 Collector Mint Pass holders + 5495 public bids (addresses known)
 */
 
 contract Vibes is Ownable, ERC721 {
