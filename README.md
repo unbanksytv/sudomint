@@ -157,3 +157,7 @@ Example applications can be found [here](https://github.com/manifoldxyz/creator-
 ## Running the package unit tests
 
 Visit the [github repo](https://github.com/manifoldxyz/creator-core-solidity) and clone the repo.  It uses the truffle framework and ganache-cli.
+
+## Rebasing NFT experiment
+
+NFTs that — as you stake them — give you more NFTs
