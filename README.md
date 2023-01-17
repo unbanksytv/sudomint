@@ -160,4 +160,4 @@ Visit the [github repo](https://github.com/manifoldxyz/creator-core-solidity) an
 
 ## Rebasing NFT experiment
 
-NFTs that — as you stake them — give you more NFTs
+NFTs that — as you stake them — give you more NFTs. The Rebase Collection utilizes the ERC1155's ability to be both fungible and nonfungible. Each token in the collection has an elastic supply which means you can rebase on a single token id. RebaseCollection applies 'base units' and a 'scaling factor' to distribute tokens and scale the supply respectively.
