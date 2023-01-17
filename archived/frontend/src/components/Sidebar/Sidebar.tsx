@@ -45,7 +45,7 @@ export const Sidebar = () => (
     <Link href="/">
       <div className="flex items-center font-bold p-4 cursor-pointer">
         <Icon name="Rabbit" size={32} />
-        <span className="ml-2">Rabbits</span>
+        <span className="ml-2">LTL</span>
       </div>
     </Link>
     <ol className="mt-3">
@@ -54,20 +54,6 @@ export const Sidebar = () => (
       </Item>
       <Item href={routes.mint}>
         <UsersIcon className="w-6 h-6 mr-2" /> Mint
-      </Item>
-      <Item href="https://bridge.avax.network/" newTab>
-        <CurrencyDollarIcon className="w-6 h-6 mr-2" /> Buy{' '}
-        <ArrowSmRightIcon className="w-5 h-5 -rotate-45" />
-      </Item>
-      <Item href="https://bridge.avax.network/" newTab>
-        <Icon name="Bridge" className="w-6 h-6 mr-2" /> Bridge{' '}
-        <ArrowSmRightIcon className="w-5 h-5 -rotate-45" />
-      </Item>
-      <Item href={routes.stats}>
-        <ChartBarIcon className="w-6 h-6 mr-2" /> Stats
-      </Item>
-      <Item href={routes.docs}>
-        <FolderIcon className="w-6 h-6 mr-2" /> Docs
       </Item>
     </ol>
   </div>

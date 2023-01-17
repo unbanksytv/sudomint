@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply bg-pink-400;
+  @apply bg-pink-900;
 }
 
 /* Chrome, Safari, Edge, Opera */

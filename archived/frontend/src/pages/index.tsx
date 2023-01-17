@@ -11,15 +11,13 @@ const Home = () => (
     <div className="flex flex-col justify-center items-center h-full relative">
       <div className="md:w-200 text-center z-10">
         <h1 className="text-6xl leading-none font-extrabold tracking-tight text-white">
-          Multiply your rabbits,
+          Aloha,
         </h1>
         <h2 className="text-6xl leading-none font-extrabold tracking-tight text-dark-pink-100">
-          anon-kun
+          Aloha
         </h2>
         <p className="text-xl leading-7 font-normal text-white">
-          Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem
-          cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat
-          aliqua.
+          Anon.
         </p>
         <div className="flex w-full justify-center mt-4">
           <Link href={stake}>
