@@ -7,7 +7,7 @@ const Home: NextPage = () => {
     <div className={styles.container}>
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="http://thirdweb.com/">thirdweb</a>!
+          ...<a href="http://livethelife.tv/">LTL</a>...
         </h1>
 
         <p className={styles.description}>
@@ -21,29 +21,24 @@ const Home: NextPage = () => {
         </div>
 
         <div className={styles.grid}>
-          <a href="https://portal.thirdweb.com/" className={styles.card}>
-            <h2>Portal &rarr;</h2>
+          <a href="https://livethelife.tv/" className={styles.card}>
+            <h2>Live &rarr;</h2>
             <p>
-              Guides, references and resources that will help you build with
-              thirdweb.
             </p>
           </a>
 
-          <a href="https://thirdweb.com/dashboard" className={styles.card}>
-            <h2>Dashboard &rarr;</h2>
+          <a href="https://livethelife.tv/" className={styles.card}>
+            <h2>The &rarr;</h2>
             <p>
-              Deploy, configure and manage your smart contracts from the
-              dashboard.
             </p>
           </a>
 
           <a
-            href="https://portal.thirdweb.com/templates"
+            href="https://livethelife.tv/"
             className={styles.card}
           >
-            <h2>Templates &rarr;</h2>
+            <h2>Life &rarr;</h2>
             <p>
-              Discover and clone template projects showcasing thirdweb features.
             </p>
           </a>
         </div>
