@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.4;
 
-import { ERC721AssetBacked } from "../ERC721AssetBacked.sol";
+import { ERC721AssetBacked } from "../ERC721AssetBackedM.sol";
 
 
 contract ERC721AssetBackedMock is ERC721AssetBacked {
