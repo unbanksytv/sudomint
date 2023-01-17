@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@chainlink/contracts": "^0.6.0",
+    "@manifoldxyz/creator-core-solidity": "^2.0.2",
     "@manifoldxyz/libraries-solidity": "^1.0.4",
     "@openzeppelin/contracts": "^4.8.1",
     "@openzeppelin/hardhat-upgrades": "^1.22.0",
