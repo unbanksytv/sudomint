@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@chainlink/contracts": "^0.6.0",
+    "@manifoldxyz/libraries-solidity": "^1.0.4",
     "@openzeppelin/contracts": "^4.8.1",
     "@openzeppelin/hardhat-upgrades": "^1.22.0",
     "@thirdweb-dev/contracts": "^3",
