@@ -63,3 +63,18 @@ For any questions, suggestions, join our discord at [https://discord.gg/thirdweb
 ## Experimental Contracts
 
 mdda.sol "running true Dutch auctions within NFT sales"
+
+Bondstyle and Asset Backed 721 experiments
+
+an implementation of an ERC-721 token contract that is backed by a specific asset, such as an ERC-20 token. Overall, it looks like it's implementing the correct logic and using the OpenZeppelin libraries correctly. It's good practice to use the SafeMath library to perform arithmetic operations in order to protect against overflow/underflow errors.
+
+The _mint and _burn functions are marked as internal, which means that they can only be called by other functions within the contract. It might be better to make them external, so that they can be called by other contracts or external users.
+
+The _mint and _burn functions are virtual, which means that they can be overridden by derived contracts.
+It is important to be aware that if you plan to inherit this contract, and want to use these functions, you should use the keyword override for these functions.
+
+We might want to consider adding some additional functionality or constraints, such as:
+
+A way to check the total supply of the token
+A way to check the balance of an address
+A way to check the token id of an owner
