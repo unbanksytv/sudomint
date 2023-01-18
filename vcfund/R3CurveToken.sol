@@ -11,7 +11,7 @@ pragma solidity >=0.8.2 <0.9.0;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "./base/ERC721Checkpointable.sol";
+import "./base/ERC721Checkpointable.sol"; 
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 import "./interfaces/IR3CurveToken.sol";
 
