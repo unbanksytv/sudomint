@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 // Creator: base64.tech
 
-pragma solidity ^0.8.13;
+pragma solidity ^0.8.4;
 
 import "./ERC721A.sol";
 
