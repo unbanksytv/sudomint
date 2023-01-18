@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity >=0.8.2 <0.9.0;
+pragma solidity ^0.8.4;
 
 /// @title KrownDao's ERC721 contract to handle 721s
 /// @author @kmao37
@@ -11,9 +11,9 @@ pragma solidity >=0.8.2 <0.9.0;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "./base/ERC721Checkpointable.sol";
+import "./ERC721Checkpointable.sol";
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
-import "./interfaces/IR3CurveToken.sol";
+import "./IR3CurveToken.sol";
 
 contract R3CurveToken is IR3CurveToken, Ownable, ERC721Checkpointable {
     // The team treasury address
