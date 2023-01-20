@@ -12,7 +12,7 @@
 // https://github.com/ourzora/auction-house/blob/54a12ec1a6cf562e49f0a4917990474b11350a2d/contracts/AuctionHouse.sol
 //
 // AuctionHouse.sol source code Copyright Zora licensed under the GPL-3.0 license.
-// With modifications by Nounders DAO and Degen Dogs Club.
+// With modifications by Nounders DAO and Degen Club.
 
 pragma solidity ^0.8.0;
 
@@ -229,7 +229,7 @@ contract DogsAuctionHouse is IDogsAuctionHouse, PausableUpgradeable, ReentrancyG
             // 4 hours
             return 60*60*4;
         } else if ( id == 1 ) {
-            // 72 hours - Ukraine Dog
+            // 72 hours - POL Bootstrap 10% for NFT_0
             return 60*60*24*3;
         } else {
             // 2 hours up to id 26
