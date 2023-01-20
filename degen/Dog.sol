@@ -49,8 +49,8 @@ contract Dog is ERC721, ERC721Checkpointable, Ownable, Streamonomics {
 
     address public treasury;
 
-    IDAOSuperApp public donationDAO;
-    uint256 public donationPercentage = 10;
+    IDAOSuperApp public liquidityDAO;
+    uint256 public liquidityPercentage = 10;
 
     mapping(uint256 => uint256) public winningBid;
 
@@ -88,7 +88,7 @@ contract Dog is ERC721, ERC721Checkpointable, Ownable, Streamonomics {
         address newAddress
     );
 
-    event DonationPercentageUpdated(
+    event LiquidityPercentageUpdated(
         uint256 oldPercentage,
         uint256 newPercentage
     );
@@ -140,7 +140,7 @@ contract Dog is ERC721, ERC721Checkpointable, Ownable, Streamonomics {
 
     constructor(
         address _tokenVestor, 
-        address _donationDAO, 
+        address _liquidityDAO, 
         address _weth, 
         address _idletoken, 
         address _dogMaster,
@@ -151,7 +151,7 @@ contract Dog is ERC721, ERC721Checkpointable, Ownable, Streamonomics {
         ERC721(_name, _symbol) {
 
         vestor = ITokenVestor(_tokenVestor);
-        donationDAO = IDAOSuperApp(_donationDAO);
+        liquidityDAO = IDAOSuperApp(_liquidityDAO);
         weth = _weth;
         idleWETH = _idletoken;
         dogMaster = _dogMaster;
@@ -196,14 +196,14 @@ contract Dog is ERC721, ERC721Checkpointable, Ownable, Streamonomics {
         idleWETH = _vault;
     }
 
-    function setDonationPercentage(uint256 _pct) external onlyOwner {
-        emit DonationPercentageUpdated(donationPercentage, _pct);
+    function setLiquidityPercentage(uint256 _pct) external onlyOwner {
+        emit LiquidityPercentageUpdated(liquidityPercentage, _pct);
         uint256 streamPct;
         for(uint i = 0; i < streamonomics.length; i++) {
             streamPct += streamonomics[i].percentage;
         }
         require(_pct <= (100 - streamPct), "!>100");
-        donationPercentage = _pct;
+        liquidityPercentage = _pct;
     }
 
     function setFlowDelay(uint256 _seconds) external onlyOwner {
@@ -247,16 +247,16 @@ contract Dog is ERC721, ERC721Checkpointable, Ownable, Streamonomics {
         require(beforeBalance.add(amount) == afterBalance, "!amt");
         
         uint256 toIdleAmount = amount;
-        if ( address(donationDAO) != address(0) ) {
-            if (donationPercentage > 0) {
-                uint256 donationAmount = amount.mul(donationPercentage).div(100);
+        if ( address(liquidityDAO) != address(0) ) {
+            if (liquidityPercentage > 0) {
+                uint256 liquidityAmount = amount.mul(liquidityPercentage).div(100);
                 if (tokenId == 1) {
-                    // @dev 100% donation for Dog#1: Ukraine Dog
-                    donationAmount = amount;
+                    // @dev 100% POL reserves for Dog#1: POL
+                    liquidityAmount = amount;
                 }
-                token.approve(address(donationDAO), donationAmount);
-                donationDAO.deposit(weth, donationAmount, newOwner);
-                toIdleAmount -= donationAmount;
+                token.approve(address(liquidityDAO), liquidityAmount);
+                liquidityDAO.deposit(weth, liquidityAmount, newOwner);
+                toIdleAmount -= liquidityAmount;
             }
         }
         
