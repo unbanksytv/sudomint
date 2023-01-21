@@ -19,6 +19,7 @@
     "@openzeppelin/contracts-upgradeable": "^4.8.1",
     "@openzeppelin/hardhat-upgrades": "^1.22.0",
     "@thirdweb-dev/contracts": "^3",
+    "eth-gas-reporter": "^0.2.25",
     "solmate": "^6.6.1",
     "typechain": "^8.1.1"
   }
