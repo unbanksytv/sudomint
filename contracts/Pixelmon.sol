@@ -384,8 +384,8 @@ contract Pixelmons is Context, ERC165, IERC721, IERC721Metadata {
      * @dev See {IERC721-approve}.
      */
     function approve(address to, uint256 tokenId) public virtual override {
-        address owner = ERC721.theownerOf(tokenId);
-        require(to != owner, "ERC721: approval to current owner");
+        address owner = PixelMonster.theownerOf(tokenId);
+        require(to != owner, "PixelMon: approval to current owner");
 
         require(
             _msgSender() == owner || isApprovedForAll(owner, _msgSender()),
@@ -507,8 +507,8 @@ contract Pixelmons is Context, ERC165, IERC721, IERC721Metadata {
      * - `tokenId` must exist.
      */
     function _isApprovedOrOwner(address spender, uint256 tokenId) internal view virtual returns (bool) {
-        require(_exists(tokenId), "ERC721: operator query for nonexistent token");
-        address owner = ERC721.theownerOf(tokenId);
+        require(_exists(tokenId), "PixelMonster: operator query for nonexistent token");
+        address owner = PixelMonster.theownerOf(tokenId);
         return (spender == owner || getApproved(tokenId) == spender || isApprovedForAll(owner, spender));
     }
 
