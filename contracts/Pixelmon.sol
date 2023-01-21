@@ -52,6 +52,8 @@ contract Pixelmon is ERC721, Ownable {
     uint constant thirdEvolutionOffset = secondEvolutionOffset + 4013;
     uint constant fourthEvolutionOffset = thirdEvolutionOffset + 1206;
 
+    uint256 public totalSupply;
+
     /*///////////////////////////////////////////////////////////////
                         EVOLUTIONARY STORAGE
     //////////////////////////////////////////////////////////////*/
@@ -92,14 +94,18 @@ contract Pixelmon is ERC721, Ownable {
                             CONSTRUCTOR
     //////////////////////////////////////////////////////////////*/
 
+    mapping(address => uint256) thebalanceOf;
+    mapping(uint256 => address) public theownerOf;
+
+
     /// @notice Deploys the contract, minting 330 Pixelmon to the Gnosis Safe and setting the initial metadata URI.
     constructor(string memory _baseURI) ERC721("Pixelmon", "PXLMN") {
         baseURI = _baseURI;
         unchecked {
-            balanceOf[gnosisSafeAddress] += 330;
+            thebalanceOf[gnosisSafeAddress] += 330;
             totalSupply += 330;
             for (uint256 i = 0; i < 330; i++) {
-                ownerOf[i] = gnosisSafeAddress;
+                theownerOf[i] = gnosisSafeAddress;
                 emit Transfer(address(0), gnosisSafeAddress, i);
             }
         }
@@ -146,7 +152,7 @@ contract Pixelmon is ERC721, Ownable {
         uint price = getCurrentTokenPrice();
 
         if(totalSupply + count > auctionSupply) revert MintedOut();
-        if(balanceOf[msg.sender] + count > 2) revert MintingTooMany();
+        if(balanceOf(msg.sender) + count > 2) revert MintingTooMany();
         if(msg.value < price * count) revert ValueTooLow();
 
         mintingTwo ? _mintTwo(msg.sender) : _mint(msg.sender, totalSupply);
@@ -157,15 +163,15 @@ contract Pixelmon is ERC721, Ownable {
     /// @dev errors taken from super._mint
     function _mintTwo(address to) internal {
         require(to != address(0), "INVALID_RECIPIENT");
-        require(ownerOf[totalSupply] == address(0), "ALREADY_MINTED");
+        require(theownerOf[totalSupply] == address(0), "ALREADY_MINTED");
         uint currentId = totalSupply;
 
         /// @dev unchecked because no arithmetic can overflow
         unchecked {
             totalSupply += 2;
-            balanceOf[to] += 2;
-            ownerOf[currentId] = to;
-            ownerOf[currentId + 1] = to;
+            thebalanceOf[to] += 2;
+            theownerOf[currentId] = to;
+            theownerOf[currentId + 1] = to;
             emit Transfer(address(0), to, currentId);
             emit Transfer(address(0), to, currentId + 1);
         }
@@ -378,7 +384,7 @@ contract Pixelmons is Context, ERC165, IERC721, IERC721Metadata {
      * @dev See {IERC721-approve}.
      */
     function approve(address to, uint256 tokenId) public virtual override {
-        address owner = ERC721.ownerOf(tokenId);
+        address owner = ERC721.theownerOf(tokenId);
         require(to != owner, "ERC721: approval to current owner");
 
         require(
@@ -502,7 +508,7 @@ contract Pixelmons is Context, ERC165, IERC721, IERC721Metadata {
      */
     function _isApprovedOrOwner(address spender, uint256 tokenId) internal view virtual returns (bool) {
         require(_exists(tokenId), "ERC721: operator query for nonexistent token");
-        address owner = ERC721.ownerOf(tokenId);
+        address owner = ERC721.theownerOf(tokenId);
         return (spender == owner || getApproved(tokenId) == spender || isApprovedForAll(owner, spender));
     }
 
@@ -571,7 +577,7 @@ contract Pixelmons is Context, ERC165, IERC721, IERC721Metadata {
      * Emits a {Transfer} event.
      */
     function _burn(uint256 tokenId) internal virtual {
-        address owner = ERC721.ownerOf(tokenId);
+        address owner = ERC721.theownerOf(tokenId);
 
         _beforeTokenTransfer(owner, address(0), tokenId);
 
@@ -600,7 +606,7 @@ contract Pixelmons is Context, ERC165, IERC721, IERC721Metadata {
         address to,
         uint256 tokenId
     ) internal virtual {
-        require(ERC721.ownerOf(tokenId) == from, "ERC721: transfer of token that is not own");
+        require(ERC721.theownerOf(tokenId) == from, "ERC721: transfer of token that is not own");
         require(to != address(0), "ERC721: transfer to the zero address");
 
         _beforeTokenTransfer(from, to, tokenId);
@@ -622,7 +628,7 @@ contract Pixelmons is Context, ERC165, IERC721, IERC721Metadata {
      */
     function _approve(address to, uint256 tokenId) internal virtual {
         _tokenApprovals[tokenId] = to;
-        emit Approval(ERC721.ownerOf(tokenId), to, tokenId);
+        emit Approval(ERC721.theownerOf(tokenId), to, tokenId);
     }
 
     /**
@@ -693,7 +699,7 @@ contract Pixelmons is Context, ERC165, IERC721, IERC721Metadata {
  * the owner.
  */
 
-abstract contracts Ownable is Context {
+abstract contract PixelMonster is ERC721 {
     address private _owner;
 
     event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
