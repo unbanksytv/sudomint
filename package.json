@@ -22,6 +22,7 @@
     "@thirdweb-dev/contracts": "^3",
     "@uniswap/v2-periphery": "^1.1.0-beta.0",
     "eth-gas-reporter": "^0.2.25",
+    "seaport-smart": "^1.1.0",
     "solmate": "^6.6.1",
     "typechain": "^8.1.1"
   }
