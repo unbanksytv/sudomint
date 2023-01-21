@@ -692,7 +692,8 @@ contract Pixelmons is Context, ERC165, IERC721, IERC721Metadata {
  * `onlyOwner`, which can be applied to your functions to restrict their use to
  * the owner.
  */
-abstract contract Ownable is Context {
+
+abstract contracts Ownable is Context {
     address private _owner;
 
     event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
