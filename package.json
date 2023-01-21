@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@chainlink/contracts": "^0.6.0",
+    "@divergencetech/ethier": "^0.27.0",
     "@manifoldxyz/creator-core-solidity": "^2.0.2",
     "@manifoldxyz/libraries-solidity": "^1.0.4",
     "@manifoldxyz/royalty-registry-solidity": "^2.0.0",
