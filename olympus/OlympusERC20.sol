@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0
-pragma solidity ^0.7.5;
+pragma solidity 0.8.4;
 
 import "./libraries/SafeMath.sol";
 
@@ -14,8 +14,8 @@ contract OlympusERC20Token is ERC20Permit, IOHM, OlympusAccessControlled {
     using SafeMath for uint256;
 
     constructor(address _authority)
-        ERC20("Olympus", "OHM", 9)
-        ERC20Permit("Olympus")
+        ERC20("Good Vibes Ohmly", "GVO", 9)
+        ERC20Permit("Good Vibes Ohml")
         OlympusAccessControlled(IOlympusAuthority(_authority))
     {}
 
