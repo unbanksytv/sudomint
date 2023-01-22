@@ -11,6 +11,7 @@
     "ts-node": "^10.9.1"
   },
   "dependencies": {
+    "@catalogworks/zorav3-with-types": "^1.0.14",
     "@chainlink/contracts": "^0.6.0",
     "@divergencetech/ethier": "^0.27.0",
     "@manifoldxyz/creator-core-solidity": "^2.0.2",

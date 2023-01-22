@@ -1,5 +1,5 @@
-// SPDX-License-Identifier: MIT
-pragma solidity 0.8.4;
+// SPDX-License-Identifier: (MIT AND GPL-3.0)
+pragma solidity ^0.8.4;
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
@@ -289,8 +289,9 @@ contract Staking {
     event StakeUnlocked(address recipient, uint256 tokenAmount, uint256 lockingPeriodInBlocks, uint256 rewardPoints);
     event RewardGranted(address recipient, uint256 amountEarned);
     event grantedTokensReleased(address recipient, uint256 amount);
-}// SPDX-License-Identifier: MIT
+}
 
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.4;
 
 /**
