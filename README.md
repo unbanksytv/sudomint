@@ -1,3 +1,21 @@
+## Intro
+
+Last year I decided to dive into the rabbit hole that is smart contract development, please do not actually use this code for anything, it is mostly a thought experiment and I have done minimal testing of the code, there are probably bugs. I want to see this space do more than copy yuga labs. Creators should experiment with the boundaries of what it means to be an NFT, and the flexibility of the underlying technology.
+
+## Problem
+
+NFT culture has calcified. Full of grifters with no artistic taste flexing no-effort fiverr art PFPs. We need to  go back to the old days when it was underground, hip and cool.
+
+## Solution
+
+ERC721FTR. An NFT contract that won't let itself an NFT transfer if you have more than 1 ETH in your wallet at all. (upper wall similar like we see at RBS). And add logic of asset-backed floor price with POL. 
+
+ERC721R — a newer approach that allows dissatisfied minters to return their NFTs for a refund
+
+## 24 contracts deployed on Goerli
+
+We use Thirdweb deploy so we don't need to mess around with private keys and so we can easily deploy through a multisig like Gnosis that is tied to an LLC so that we play within the rules if we ever decide to deploy to mainnet. 
+
 ## Randomized tiered airdrop collection
 
 ## MDDA On Chain Dutch Auction with refund system
@@ -17,7 +35,7 @@ Disclaimer: This code is still a rough draft. There could very well be major bre
 Create a project using this example:
 
 ```bash
-npx thirdweb create --contract --template hardhat-javascript-starter
+npx thirdweb create (--contract --template hardhat-javascript-starter)
 ```
 
 You can start editing the page by modifying `contracts/Contract.sol`.
