@@ -2,15 +2,64 @@
 
 Last year I decided to dive into the rabbit hole that is smart contract development, please do not actually use this code for anything, it is mostly a thought experiment and I have done minimal testing of the code, there are probably bugs. I want to see this space do more than copy yuga labs. Creators should experiment with the boundaries of what it means to be an NFT, and the flexibility of the underlying technology.
 
+You don’t have to be a developer to learn the key concepts behind the reigning ERC721 implementations or behind some of the worst and most innovative NFT smart contracts to date. Doing your homework here will help you better understand NFT design in general
+
 ## Problem
 
 NFT culture has calcified. Full of grifters with no artistic taste flexing no-effort fiverr art PFPs. We need to  go back to the old days when it was underground, hip and cool.
 
+The ERC721A standard is becoming more and more widespread, and has saved many NFT minters a lot of gas. However, it does have drawbacks, and developers need to thoughtfully consider whether it fits their use case. While it saves a lot of gas when minting multiple NFTs, almost every other action is going to be less gas efficient than a standard ERC721 implementation, including minting a single NFT.
+
 ## Solution
+
+Experimentation!!! examples:
 
 ERC721FTR. An NFT contract that won't let itself an NFT transfer if you have more than 1 ETH in your wallet at all. (upper wall similar like we see at RBS). And add logic of asset-backed floor price with POL. 
 
 ERC721R — a newer approach that allows dissatisfied minters to return their NFTs for a refund
+
+Use ERC721A if you are expecting the majority of your project’s mints to be more than 1 NFT, especially if your project is facing certain high demand and you are scared of congesting the network during the mint.
+
+If you are expecting the majority of the mints to be 1 or 2 NFTs each, the case for most projects using an early access list setup, or if your project is burning nfts or continously transferring them to a staking contract etc., use a standard ERC721. The mints will be about the same or slightly more expensive, but all the future interactions will be much cheaper.
+
+Solmate provides a number of minimalist token implementation, including ERC721 and ERC1155. As shown in the table above, the gas savings for minting are quite small, but save around 10% on transfers and lead to more savings as operations on the NFTs become more complex. There is absolutely no reason not to use solmate’s ERC721 implementation over openzepplin’s. It does the same things, it is just more efficient.
+
+You may note that the ERC721 implementation says that it is an abstract contract. This means one or more contract functions need to be implemented by the contract extending it. In this case, the tokenURI function.
+This should pretty much cover all of your metadata needs: a proper tokenURI function override, as well as a way to change the baseURI. I also include a way to “freeze” the metadata, or disable your ability to change the baseURI, so that token holders can feel secure with the metadata being hosted on ipfs with no way to modify it.
+
+This implementation also requires you to import the Strings library as well as import and use the ownable library in your contract definition to use the onlyOwner modifier. But that’s it! All you need to do in order to use solmate’s ERC721 instead of openzepplin’s, and save gas!
+
+When we talk about modern, efficient ERC721 implementations, that means we are talking signature checking, validation, whatever you want to call it. The days of hardcoded allow lists seem to be behind us, and signatures are entering the mix, but there are still quite a few merkle tree implementations. Signature checking is more efficient, and it’s what we should all be using.
+
+Signature checking is also just a really cool tool, and can allow us do some really powerful things beyond just having an early access list. Like doing dynamic burning, aka: burning certain types of NFTs, with the type being specified by the metadata without having to put that metadata on chain, to get another type of NFT.
+
+Basically, using signature checking gives us the ability to decide certain things off chain, like what type of watch a given token is, or whether or not someone owns NFTs from another collection, or whether some internal metric that we record internally and is not on chain is met by a user.
+
+Really any piece of information we need to verify about a token or wallet, we can put into a message and sign with a specific wallet that our contract considers a source of truth. It is much easier to verify information off chain, or in many cases the only way to do so without writing the information to the blockchain, which is very expensive.
+
+  string private uri = "ipfs://QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/"
+    
+  bool public frozen = false;
+
+  using Strings for uint256;
+
+  function tokenURI(uint256 tokenId) public view virtual override returns (string memory) {
+    require(_ownerOf[tokenId] != address(0), "NOT_MINTED");
+
+    return string(abi.encodePacked(uri, tokenId.toString()));
+  }
+
+  function setBaseURI(string memory baseURI) public onlyOwner {
+    if (frozen) {
+      revert("Metadata is frozen");
+    }
+
+    uri = baseURI;
+  }
+
+  function freezeMetadata() public onlyOwner {
+    frozen = true;
+  }
 
 ## 24 contracts deployed on Goerli
 
